@@ -127,8 +127,21 @@ permalink: /
   </div>
 </section>
 
+<section class="section" id="network-input">
+  <div class="section-heading"><span class="section-index">04</span><h2>Интерактивный ввод данных</h2></div>
+  <p class="section-intro">Локальная форма для ввода, проверки и сохранения параметров модели сети в браузере. Она не выполняет расчёт расписания.</p>
+  <div class="cards">
+    <article class="card">
+      <div class="card-top"><span class="card-icon">IN</span><span class="card-type">Browser tool</span></div>
+      <h3>Параметры сетевой модели</h3>
+      <p>Количество узлов и линий, объём данных, скорость линии и длительность временного слота.</p>
+      <div class="card-links"><a href="{{ '/tools/network-input/' | relative_url }}">Открыть форму ввода →</a></div>
+    </article>
+  </div>
+</section>
+
 <section class="section" id="evidence">
-  <div class="section-heading"><span class="section-index">04</span><h2>Источники, проверка и достоверность</h2></div>
+  <div class="section-heading"><span class="section-index">05</span><h2>Источники, проверка и достоверность</h2></div>
   <p class="section-intro">Каждое техническое утверждение должно иметь понятный статус: источник, реконструкция, учебный пример или вопрос на проверку.</p>
   <div class="cards">
     <article class="card">
@@ -154,7 +167,7 @@ permalink: /
 </section>
 
 <section class="section" id="stack">
-  <div class="section-heading"><span class="section-index">05</span><h2>Технологический контекст</h2></div>
+  <div class="section-heading"><span class="section-index">06</span><h2>Технологический контекст</h2></div>
   <div class="tech-groups">
     <div class="tech-row"><strong>Network model</strong><span>Узлы, коммутаторы, дуплексные линии, объёмы данных между парами устройств</span></div>
     <div class="tech-row"><strong>Scheduling</strong><span>Расписание передачи по временным слотам; точный алгоритм не подтверждён</span></div>
