@@ -8,3 +8,9 @@ baseurl: "/network-schedule-docs"
 show_downloads: false
 plugins:
   - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
