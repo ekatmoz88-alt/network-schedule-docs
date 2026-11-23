@@ -16,7 +16,7 @@ permalink: /tools/network-input/
     <div class="field field-wide">
       <label for="network-name">Название модели</label>
       <input id="network-name" name="networkName" type="text" maxlength="80" required placeholder="Например, Demo network">
-      <small>Необязательная метка для различения наборов параметров.</small>
+      <small>Метка для различения наборов параметров.</small>
     </div>
     <div class="field">
       <label for="node-count">Количество узлов</label>
