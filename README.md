@@ -1,78 +1,53 @@
 # Network Schedule Documentation
 
-Documentation and technical analysis of a network scheduling simulator and its network test-bench context.
+**Самостоятельный проект документации сетевого планировщика и физического испытательного стенда.**
 
-> **Project status:** documentation project in progress. This repository describes the available source materials; it does not claim to reproduce the original application, its complete algorithm, or a verified hardware configuration.
+Публичный документационный проект: структурирование технического описания, реконструкция модели сети, описание временного планирования и отдельная фиксация сведений о физическом испытательном стенде.
 
-## Purpose
+- **Документация:** https://ekatmoz88-alt.github.io/network-schedule-docs/
+- **Дашборд портфолио:** https://github-profile-dashboard-vite.vercel.app/
 
-The repository organizes technical information about a simulator that models a network topology and produces a time-slot schedule for packet transfers. The documentation is intended to make the available requirements, terminology, configuration model, and known limitations understandable and traceable.
+## Что документируется
 
-## Scope
+- модель сети: узлы, коммутаторы и дуплексные каналы;
+- параметры линий и передача пакетов;
+- wormhole forwarding и ограничения временных оценок;
+- расписание временных слотов;
+- контекст SpaceWire и Ethernet;
+- терминология deadlock и границы анализа;
+- физическая схема испытательного стенда и подтверждение соответствия оборудования логической модели.
 
-The planned documentation covers:
+## Структура
 
-- network topology: nodes, switches, and links;
-- link parameters, including speed and length, where specified by the source material;
-- packet-transfer inputs and timing concepts;
-- time-slot schedules and their interpretation;
-- wormhole routing as a forwarding model;
-- SpaceWire and Ethernet context;
-- deadlock concepts and the limits of what can be inferred;
-- the physical test-bench scheme and the mapping between diagram symbols and devices, based on the supplied bench documentation.
+| Раздел | Содержание |
+|---|---|
+| [Обзор](docs/overview.md) | Назначение, область и ограничения документации |
+| [Доказательная база](docs/evidence.md) | Источники, статусы утверждений и открытые вопросы |
+| [Архитектура](docs/architecture/README.md) | Топология, узлы, линии и физический стенд |
+| [Сетевая передача](docs/networking/README.md) | Пакеты, wormhole, SpaceWire/Ethernet, deadlock |
+| [Расписание](docs/scheduling/README.md) | Временные слоты, ограничения и учебный расчёт |
+| [Проверка](docs/verification.md) | Чек-лист подтверждения и публикации |
+| [English overview](en/index.md) | English landing page |
 
-The physical test-bench scheme is treated as configuration and device-mapping evidence. It is **not** presented as a software architecture diagram.
+## Достоверность
 
-## Evidence and confidence labels
+- **[РТО]** — прямо указано в техническом описании / РТО.
+- **[Реконструкция]** — инженерная интерпретация неполных сведений.
+- **[Учебный пример]** — условные данные для объяснения принципа.
+- **[Требует проверки]** — нет достаточного подтверждающего источника.
 
-The documentation distinguishes source facts from interpretation:
+## Технические ограничения
 
-| Label | Meaning |
-| --- | --- |
-| **[РТО]** | Information stated in the technical description / requirements document. |
-| **[Реконструкция]** | An interpretation assembled from incomplete or indirect evidence. |
-| **[Учебный пример]** | Illustrative data used to explain a concept; not a claim about the original simulator. |
-| **[Требует проверки]** | A detail that cannot yet be confirmed from the available materials. |
+Не выдавать реконструкцию за исходную реализацию. Пока не подтверждены алгоритм планирования, арбитраж, буферы, flow control, формат экспорта расписания и точная конфигурация стенда. Программная топология и физическая схема стенда рассматриваются раздельно.
 
-Where a statement depends on incomplete evidence, the relevant label should appear next to the statement rather than being hidden in a general disclaimer.
+В wormhole-сети передача может быть конвейерной: нельзя автоматически суммировать полное время сериализации пакета на каждом участке маршрута. Пересечение линий на рисунке не доказывает ни соединение, ни deadlock. SpaceWire и Ethernet не взаимозаменяемы; CSMA/CD нельзя обобщать на коммутируемый full-duplex Ethernet.
 
-## Technical context recorded in the source description
+## Технологии документационного проекта
 
-The available technical description identifies the application as a network modelling/simulation tool. It describes nodes and switches connected by duplex links, configurable link speed and length, packet-size inputs for device pairs, and a resulting time-slot schedule.
+Markdown, Jekyll, GitHub Pages, GitHub Actions, HTML/CSS, SVG.
 
-The source description also names wormhole routing (with SpaceWire as an example), C++, Qt, and Qt Creator. These are recorded as source-described technologies and context; they do not independently establish the exact implementation details of the scheduling algorithm.
+Технологии исходного приложения, упомянутые в техническом описании (C++, Qt, Qt Creator, SpaceWire), относятся к описываемому продукту, а не к стеку сборки этого сайта.
 
-## Important interpretation limits
+## Статус
 
-- A time-slot schedule is a separate system-level mechanism; it is not an inherent requirement of SpaceWire.
-- Wormhole forwarding can pipeline packet transfer. End-to-end transfer time must not automatically be calculated as the simple sum of every link's full packet-transmission time.
-- Deadlock means cyclic resource waiting. A visual crossing of links, or the absence of an obvious link conflict, is not by itself proof of deadlock or deadlock freedom.
-- Do not infer buffer sizes, flow-control rules, arbitration policy, conflict detection, schedule export to hardware, or schedule-loading behaviour unless a source explicitly confirms them.
-- The currently available topology sketch is incomplete. Only the clearly supported connections should be drawn as confirmed; uncertain node-to-switch connections must remain marked as requiring verification.
-- SpaceWire and Ethernet are not interchangeable technologies. Ethernet behaviour depends on the relevant medium and operating mode; CSMA/CD should not be generalized to modern switched full-duplex Ethernet.
-
-## Repository structure
-
-The documentation structure will be expanded as source materials are reviewed. A typical organization may include:
-
-- README.md — project overview, scope, and evidence conventions;
-- docs/ — requirements, concepts, topology, schedule interpretation, and test-bench mapping;
-- assets/ — diagrams and supporting visual materials, where redistribution is permitted.
-
-Only files that actually exist in the repository should be treated as published documentation.
-
-## Documentation site
-
-The intended output is a static GitHub Pages site built from Markdown and static HTML/CSS/JavaScript. Interactive elements must have working behaviour; decorative controls without an action are out of scope.
-
-No backend, database, API server, or server-side dynamic processing is required for the documentation site.
-
-## Source and confidentiality
-
-The documentation is based on the available technical description, diagrams, and other supplied project materials. Personal contact details and other unnecessary personal data are excluded from the public portfolio.
-
-Before publishing any source document, screenshot, or diagram, verify that it may be redistributed publicly. Do not publish confidential source code, credentials, personal data, or proprietary material without authorization.
-
-## Status
-
-This README establishes the repository purpose and documentation conventions. It does not imply that all planned pages, diagrams, tests, or GitHub Pages deployment are already complete.
+Структура и базовые аналитические страницы опубликованы. Содержимое, требующее первичных схем, точных параметров и подтверждения реализации, явно помечается как открытый вопрос. Наличие документационной страницы не означает, что соответствующая функция исходного ПО была реализована или испытана.
