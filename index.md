@@ -18,6 +18,9 @@ permalink: /
 <a class="doc-card" href="{{ '/docs/networking/packet-transfer/' | relative_url }}"><strong>Передача пакетов</strong><span>Параметры линий и временные оценки</span></a>
 <a class="doc-card" href="{{ '/docs/scheduling/overview/' | relative_url }}"><strong>Расписание</strong><span>Планирование и временные слоты</span></a>
 <a class="doc-card" href="{{ '/docs/architecture/test-bench/' | relative_url }}"><strong>Физический стенд</strong><span>Оборудование и соединения</span></a>
+<a class="doc-card" href="{{ '/docs/networking/' | relative_url }}"><strong>Сетевая передача</strong><span>Wormhole, SpaceWire, Ethernet и deadlock</span></a>
+<a class="doc-card" href="{{ '/docs/scheduling/' | relative_url }}"><strong>Расписание</strong><span>Слоты, ограничения и учебный расчёт</span></a>
+<a class="doc-card" href="{{ '/docs/verification/' | relative_url }}"><strong>Проверка</strong><span>Чек-лист и открытые вопросы</span></a>
 </div>
 
 ## Метки достоверности
