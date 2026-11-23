@@ -1,9 +1,9 @@
 title: Network Schedule Documentation
-description: Evidence-based technical documentation of a network scheduling simulator
+description: Evidence-based documentation of a network scheduling simulator and its physical test-bench context
 theme: jekyll-theme-cayman
 markdown: kramdown
 permalink: pretty
-url: "https://ekatmoz88.github.io"
+url: "https://ekatmoz88-alt.github.io"
 baseurl: "/network-schedule-docs"
 show_downloads: false
 plugins:
